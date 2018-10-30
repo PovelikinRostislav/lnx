@@ -1,0 +1,134 @@
+# EC Standard Login Environment -*- sh -*-
+# user customized profile
+# $Source: /usr/cvs/cvsrep/ec_environ-1.0/release/user/profile.user,v $
+# $Revision: 1.5 $
+
+# use this logfile for debugging
+echo "I: (.profile.$USER) [entering] `/bin/date`" >> $ec_env_error_log
+
+#
+# this file executed for every new shell/window
+#
+# ALL USER CHANGES GO IN THIS FILE:
+#  append path components e.g. $HOME/bin
+#  define custom aliases
+#  set preferred printer
+#  etc...
+#
+# System defaults have been set; commented
+# examples show how you may wish to modify.
+#
+
+###
+###-------->SHELL<--------
+###
+
+###-------->umask<--------
+# The umask tells what permissions to
+# REMOVE from newly created files.
+# Information security requires the
+# default to prevent world read/write.
+# If you know none of your data is
+# more/less confidential, you may
+# want to change.
+#
+# umask 077	# prevent all group/world access
+# umask 027	# default
+# umask 022	# permit world read/search
+
+###
+###-------->ALIASES<--------
+###
+# some sample aliases you may want to uncomment or supplement
+# (bash/ksh only; linux sh is bash, hpux sh is ksh)
+#
+#alias cls='clear'
+#alias ll='ls -l'
+#alias lf='ls -F'
+#alias lr='ls -R'
+#
+
+# aliases may be kept in separate file if you wish
+#
+#if [ -r $HOME/.aliases.sh ]; then
+#  . $HOME/.aliases.sh
+#fi
+
+###
+###-------->ENVIRONMENT<--------
+###
+
+###-------->printer<--------
+# default printer; consult your site support
+# for available printer names/locations
+#
+# PRINTER=my_printer_name export PRINTER
+# LPDEST=my_printer_name export LPDEST
+
+###-------->X display<--------
+# Display forwarding is automatic when you
+# use ssh to access remote hosts.  If you
+# never use multiple displays or always
+# want to force a specific display, it may
+# be set here.
+#
+# DISPLAY=mydesktop:0 export DISPLAY
+
+###
+###-------->Shell-specific features<--------
+###
+
+if [ "1$BASH" != "1" ]; then
+   ###
+   ### features specific to bash (this normally would go in .bashrc)
+   ###
+
+   # section must have at least one comand
+   /bin/true
+fi
+
+if [ "1$KSH_VERSION" != "1" ]; then
+   ###
+   ### features specific to korn shell (ksh)
+   ###
+
+   # section must have at least one comand
+   /bin/true
+fi
+
+###
+###-------->LOGIN SHELLS<--------
+###
+if [ "1$PS1" != "1" ]; then
+    ###
+    ### This section runs for interactive shells only.
+    ###
+
+    ### example: you may wish to force the terminal
+    # settings e.g. backspace.
+    #
+    # stty erase '^H' # normal
+    # stty erase '^?' # Sun keyboard
+
+    #PS1="`uname -n`$ "	#shell prompt
+
+    # section must have at least one comand
+    /bin/true
+
+fi
+
+echo "I: (.profile.$USER) [leaving] `/bin/date`" >> $ec_env_error_log
+
+
+export PS1="\u@\h : \W $ "
+alias ll='pwd; ls -alF'
+
+stty -ixon
+stty erase ^?
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source ~/.aliases

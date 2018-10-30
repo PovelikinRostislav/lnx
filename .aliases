@@ -1,0 +1,16 @@
+# EC Standard Login Environment -*- sh -*-
+# user .aliases file
+# $Source: /usr/cvs/cvsrep/ec_environ-1.0/release/user/aliases,v $
+# $Revision: 1.1 $
+
+# You may place your personal aliases here or in .cshrc.$USER
+#
+# examples:
+# alias . exit
+# alias e emacs
+# alias telnet ssh2
+
+alias ll="pwd; ls -la"
+alias tmux="TERM=xterm-256color tmux"
+alias path="echo; echo $PATH | tr ':' '\n'; echo"
+

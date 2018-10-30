@@ -1,0 +1,13 @@
+[core]
+	editor = vim
+[http]
+	proxy = SET_PROXY
+[user]
+	name = SET_USERNAME_HERE
+    email = SET_EMAIL_HERE
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    last = log -n 1
+
