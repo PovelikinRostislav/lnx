@@ -94,11 +94,23 @@ map g* g*zzg/
 map g# g#zzg/
 "=============================================
 
-map <C-n> :NERDTreeToggle<CR>
+map <leader>e :NERDTreeToggle<CR>
+map <leader>E :NERDTreeFocus<CR>
+" Move line down/up
+map <C-j> ddp
+map <C-k> ddkkp
+" Escape
+vnoremap <Tab> <Esc>gV
+inoremap <Tab> <Esc>`^
+inoremap <Leader><Tab> <Tab>" inoremap <C-m> <Esc>
+" Save
+map <C-s> :w<CR>
+imap <C-s> <Tab>:w<CR>
+map <C-x> :q<CR>
 
 " move among buffers with CTRL
-map <C-l> :bnext<CR>
-map <C-h> :bprev<CR>
+map L :bnext<CR>
+map H :bprev<CR>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
