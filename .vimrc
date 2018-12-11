@@ -99,13 +99,9 @@ map <leader>E :NERDTreeFocus<CR>
 " Move line down/up
 map <C-j> ddp
 map <C-k> ddkkp
-" Escape
-vnoremap <Tab> <Esc>gV
-inoremap <Tab> <Esc>`^
-inoremap <Leader><Tab> <Tab>" inoremap <C-m> <Esc>
 " Save
 map <C-s> :w<CR>
-imap <C-s> <Tab>:w<CR>
+imap <C-s> <Esc>:w<CR>
 map <C-x> :q<CR>
 
 " move among buffers with CTRL

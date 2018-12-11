@@ -12,5 +12,4 @@
 
 alias ll="pwd; ls -la"
 alias tmux="TERM=xterm-256color tmux"
-alias path="echo; echo $PATH | tr ':' '\n'; echo"
 
