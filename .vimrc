@@ -60,6 +60,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
 Plug 'jacoborus/tender.vim'
 Plug 'google/vim-searchindex'
+Plug 'junegunn/seoul256.vim'
 call plug#end()
 
 :let mapleader = ","
@@ -120,4 +121,5 @@ let g:fzf_layout = { 'down': '~40%' }
 autocmd BufWritePre * :%s/\s\+$//e
 
 syntax enable
-colorscheme zenburn " nord monokai apprentice gruvbox tender
+let g:seoul256_light_background = 256
+colorscheme seoul256-light " zenburn nord monokai apprentice gruvbox tender
