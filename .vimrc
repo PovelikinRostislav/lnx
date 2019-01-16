@@ -1,11 +1,15 @@
 " GENERAL
 set nocompatible
 
+
+
 " Autoread options
 set autoread
 autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * checktime
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+
 
 " The following command scrolls the text so that (when possible) there are
 " always at least five lines visible above the cursor, and five lines visible
@@ -51,6 +55,8 @@ set hlsearch
 set nowrapscan
 
 
+
+
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -61,6 +67,8 @@ Plug 'jacoborus/tender.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'mileszs/ack.vim'
 call plug#end()
+
+
 
 
 let g:airline#extensions#tabline#enabled = 1
@@ -101,6 +109,9 @@ command! -bang -nargs=* Ag
 
 :let mapleader = ","
 
+" Quick reload cfg file with F2
+map <F2> :so $MYVIMRC <CR>
+
 " Quick write session with F3
 map <F3> :mksession! ~/.vim_session <CR>
 
@@ -110,14 +121,14 @@ map <F4> :source ~/.vim_session <CR>
 " Delete current Buffer
 nmap <leader>w :bp<bar>bd #<CR>
 
-" Quick search via Ag for current word with F2
-nnoremap <silent> <F2> :Ag <C-R><C-W><CR>
+" Quick search via Ag for current word
+nnoremap <silent> ff :Ag <C-R><C-W><CR>
 
 " Quick search via Ag for visually selected text
-vnoremap <F2> y:Ag <C-R>"<CR>
+vnoremap ff y:Ag <C-R>"<CR>
 
 " Look pattern in all files
-nnoremap <silent> <leader>r :Ag <CR>
+nnoremap <silent> <leader>F :Ag <CR>
 
 " Look files
 nnoremap <silent> <leader>f :Files<CR>
@@ -143,6 +154,9 @@ map # #zzg/
 map g* g*zzg/
 map g# g#zzg/
 "=============================================
+
+
+
 
 map <leader>e :NERDTreeToggle<CR>
 map <leader>E :NERDTreeFocus<CR>
