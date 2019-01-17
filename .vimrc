@@ -151,8 +151,8 @@ noremap K {
 " Search mathes will be centered on the screen
 map n nzzg/
 map N Nzzg/
-map * *zzg/
-map # #zzg/
+map * *zzNg/
+map # #zzNg/
 map g* g*zzg/
 map g# g#zzg/
 "=============================================
