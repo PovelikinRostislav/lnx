@@ -102,7 +102,9 @@ command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, <bang>0)
 
 command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%'))
+  \ call fzf#vim#ag(<q-args>, '--word-regexp',
+  \ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'},
+  \ 'up:60%'))
 
 
 
@@ -119,16 +121,16 @@ map <F3> :mksession! ~/.vim_session <CR>
 map <F4> :source ~/.vim_session <CR>
 
 " Delete current Buffer
-nmap <leader>w :bp<bar>bd #<CR>
+nmap <leader>x :bp<bar>bd #<CR>
 
 " Quick search via Ag for current word
-nnoremap <silent> ff :Ag <C-R><C-W><CR>
+nnoremap <silent> ss :Ag <C-R><C-W><CR>
 
 " Quick search via Ag for visually selected text
-vnoremap ff y:Ag <C-R>"<CR>
+vnoremap ss y:Ag <C-R>"<CR>
 
 " Look pattern in all files
-nnoremap <silent> <leader>F :Ag <CR>
+nnoremap <silent> <leader>s :Ag <CR>
 
 " Look files
 nnoremap <silent> <leader>f :Files<CR>
@@ -170,9 +172,13 @@ map <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>
 map <C-x> :q<CR>
 
-" move among buffers with CTRL
+" move among buffers
 map L :bnext<CR>
 map H :bprev<CR>
+
+" Resize vertical split
+map <C-h> :vertical resize +1<CR>
+map <C-l> :vertical resize -1<CR>
 
 " Trim on save
 autocmd BufWritePre * :%s/\s\+$//e
