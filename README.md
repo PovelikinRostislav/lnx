@@ -45,4 +45,5 @@
     a. stty -ixon
     b. stty erase ^?
 29. mkdir ~/bin && curl https://beyondgrep.com/ack-2.24-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
-30. sudo apt-get install silversearcher-ag
+30. sudo apt-get install silversearcher-ag or find a solution to build it from sources (Nikita Ponomarev was aware)
+31. To use vim clang-format plugin - add a clang-format into PATH
