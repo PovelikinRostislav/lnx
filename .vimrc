@@ -11,6 +11,24 @@ autocmd FileChangedShellPost *
 
 
 
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'vim-airline/vim-airline'
+Plug 'morhetz/gruvbox'
+Plug 'jacoborus/tender.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'mileszs/ack.vim'
+Plug 'rhysd/vim-clang-format'
+Plug 'airblade/vim-gitgutter'
+call plug#end()
+
+
+
+
+
+
 " The following command scrolls the text so that (when possible) there are
 " always at least five lines visible above the cursor, and five lines visible
 " below the cursor:
@@ -53,24 +71,11 @@ set incsearch
 set hlsearch
 " incremental search stop at end of file
 set nowrapscan
+" updatetime is useful for git changes
+set updatetime=100
 
 
-
-
-call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'vim-airline/vim-airline'
-Plug 'morhetz/gruvbox'
-Plug 'jacoborus/tender.vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'mileszs/ack.vim'
-call plug#end()
-
-
-
-
+let g:gitgutter_sign_column_always = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme = 'gruvbox'
