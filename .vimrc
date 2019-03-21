@@ -8,6 +8,8 @@ set autoread
 autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * checktime
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+autocmd BufWritePost * GitGutter
+autocmd BufRead * if search('-*- C++ -*-', 'nw') | setlocal ft=cpp | endif
 
 
 
@@ -75,7 +77,7 @@ set nowrapscan
 set updatetime=100
 
 
-let g:gitgutter_sign_column_always = 1
+let g:gitgutter_highlight_lines = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme = 'gruvbox'
