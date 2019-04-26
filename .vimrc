@@ -18,16 +18,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
-Plug 'morhetz/gruvbox'
-Plug 'jacoborus/tender.vim'
 Plug 'junegunn/seoul256.vim'
-Plug 'mileszs/ack.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'airblade/vim-gitgutter'
 call plug#end()
-
-
-
 
 
 
@@ -77,14 +71,12 @@ set nowrapscan
 set updatetime=100
 
 
-let g:gitgutter_highlight_lines = 1
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme = 'gruvbox'
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize = "50"
 let g:NERDTreeShowHidden = 1
-let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_colors =
   \ { 'fg':    ['fg', 'Normal'],
@@ -102,17 +94,25 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 syntax enable
-let g:seoul256_light_background = 256
-colorscheme seoul256-light " zenburn nord monokai apprentice gruvbox tender
+colorscheme seoul256 " zenburn nord monokai apprentice gruvbox tender
 
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, <bang>0)
 
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>, '--word-regexp',
-  \ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'},
-  \ 'up:60%'))
 
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find
+  \ call fzf#vim#grep('rg --column --line-number --no-heading
+  \ --fixed-strings --ignore-case --no-ignore --hidden --follow
+  \ --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1,
+  \ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:40%'), <bang>0)
 
 
 
@@ -130,14 +130,14 @@ map <F4> :source ~/.vim_session <CR>
 " Delete current Buffer
 nmap <leader>x :bp<bar>bd #<CR>
 
-" Quick search via Ag for current word
-nnoremap <silent> ss :Ag <C-R><C-W><CR>
+" Quick search via rg for current word
+nnoremap ss :Find <C-R><C-W><CR>
 
-" Quick search via Ag for visually selected text
-vnoremap ss y:Ag <C-R>"<CR>
+" Quick search via rg for visually selected text
+vnoremap ss y:Find <C-R>"<CR>
 
 " Look pattern in all files
-nnoremap <silent> <leader>s :Ag <CR>
+nnoremap <silent> <leader>s :Find <CR>
 
 " Look files
 nnoremap <silent> <leader>f :Files<CR>
@@ -154,6 +154,8 @@ noremap J }
 " Jump up for the first empty line
 noremap K {
 
+
+
 "=============================================
 " Search mathes will be centered on the screen
 map n nzzg/
@@ -163,7 +165,6 @@ map # #zzNg/
 map g* g*zzg/
 map g# g#zzg/
 "=============================================
-
 
 
 
