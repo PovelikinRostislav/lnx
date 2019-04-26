@@ -47,18 +47,22 @@ stty erase ^?
 25. Build `rg` (for vim and bash grepping) from sources
     * Install rust compiler (default options) - [How to install rust](https://www.rust-lang.org/tools/install)
         `curl https://sh.rustup.rs -sSf | sh`
-        * Add to `.bashrc`
+        * Add to `.bashrc`:
 ```
 export PATH="$HOME/.cargo/bin:$PATH"
 ```
+
     * [How to install rg](https://github.com/BurntSushi/ripgrep#installation)
     * After compilation of rg
+
 ```
 mkdir ~/rg
 mkdir ~/rg/bin
 cp ./target/release/rg ~/rg/bin
 ```
-    * Add to `.bashrc`
+
+    * Add to `.bashrc`:
+
 ```
 export PATH="$HOME/rg/bin:$PATH"
 ```
