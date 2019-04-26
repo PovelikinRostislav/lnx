@@ -29,40 +29,42 @@
         * D7D7D7 - foreground
 19. Set git config (proxy) and `git clone https://github.com/PovelikinRostislav/lnx.git`
 20. Install [vim-plug](https://github.com/junegunn/vim-plug)
-    `curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
 21. Update plugins in vim
-    * `:PlugUpdate`
+```
+:PlugUpdate
+```
 22. Add to `.bashrc` following lines from the
 ```
 stty -ixon
 stty erase ^?
 ```
-23. Change `PS` in `bashrc` (`\W` to show current folder only instead of `\w`)
+23. Change `PS` in `.bashrc` (`\W` to show current folder only instead of `\w`)
 24. Install `conda`
     * [How to install miniconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html)
-    * Add to `.bashrc`
+    * Add to `.bashrc`:
 ```
 [ -f ~/miniconda3/etc/profile.d/conda.sh ] && source ~/miniconda3/etc/profile.d/conda.sh
 ```
 25. Build `rg` (for vim and bash grepping) from sources
     * Install rust compiler (default options) - [How to install rust](https://www.rust-lang.org/tools/install)
-        `curl https://sh.rustup.rs -sSf | sh`
-        * Add to `.bashrc`:
+```
+curl https://sh.rustup.rs -sSf | sh
+```
+    * Add to `.bashrc`:
 ```
 export PATH="$HOME/.cargo/bin:$PATH"
 ```
-
     * [How to install rg](https://github.com/BurntSushi/ripgrep#installation)
     * After compilation of rg
-
 ```
 mkdir ~/rg
 mkdir ~/rg/bin
 cp ./target/release/rg ~/rg/bin
 ```
-
     * Add to `.bashrc`:
-
 ```
 export PATH="$HOME/rg/bin:$PATH"
 ```
