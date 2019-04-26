@@ -49,23 +49,8 @@ stty erase ^?
 [ -f ~/miniconda3/etc/profile.d/conda.sh ] && source ~/miniconda3/etc/profile.d/conda.sh
 ```
 25. Build `rg` (for vim and bash grepping) from sources
-    * Install rust compiler (default options) - [How to install rust](https://www.rust-lang.org/tools/install)
-```
-curl https://sh.rustup.rs -sSf | sh
-```
-    * Add to `.bashrc`:
-```
-export PATH="$HOME/.cargo/bin:$PATH"
-```
+    * Install rust compiler (default options) - [How to install rust](https://www.rust-lang.org/tools/install) via `curl https://sh.rustup.rs -sSf | sh`
+    * Add to `.bashrc`: `export PATH="$HOME/.cargo/bin:$PATH"`
     * [How to install rg](https://github.com/BurntSushi/ripgrep#installation)
-    * After compilation of rg
-```
-mkdir ~/rg
-mkdir ~/rg/bin
-cp ./target/release/rg ~/rg/bin
-```
-    * Add to `.bashrc`:
-```
-export PATH="$HOME/rg/bin:$PATH"
-```
+    * After compilation of rg copy binary `./target/release/rg` to `$HOME/rg/bin` and add to `.bashrc` this dir. `export PATH="$HOME/rg/bin:$PATH"`
 26. To use vim `clang-format` plugin - add a `clang-format` binary into PATH
