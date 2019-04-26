@@ -1,3 +1,4 @@
+# How to Install Ubuntu 18.04 LTS on VM
 1. Install vm as usual (fixed size)
 2. sudo reboot
 3. Set proxy in Settings->Network->Proxy->Manual
