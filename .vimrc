@@ -3,12 +3,7 @@ set nocompatible
 
 
 
-" Autoread options
-set autoread
-autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * checktime
-autocmd FileChangedShellPost *
-  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-autocmd BufWritePost * GitGutter
+" Autocmd option to set the cpp locality for the standard headers in llvm
 autocmd BufRead * if search('-*- C++ -*-', 'nw') | setlocal ft=cpp | endif
 
 
@@ -18,9 +13,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/seoul256.vim'
 Plug 'rhysd/vim-clang-format'
-Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 
@@ -46,8 +42,6 @@ set number
 " show whitespaces and tabs
 set list
 set listchars=tab:>-,trail:~,extends:>,precedes:<
-" highlight current line
-set cursorline
 " visual autocomplete for command menu
 set wildmenu
 " redraw only when we need to
@@ -67,16 +61,16 @@ set incsearch
 set hlsearch
 " incremental search stop at end of file
 set nowrapscan
-" updatetime is useful for git changes
-set updatetime=100
 
 
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize = "50"
 let g:NERDTreeShowHidden = 1
+
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_colors =
   \ { 'fg':    ['fg', 'Normal'],
@@ -94,7 +88,9 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 syntax enable
-colorscheme seoul256 " zenburn nord monokai apprentice gruvbox tender
+colorscheme seoul256
+highlight LineNr ctermbg=585858
+let g:airline_theme='angr'
 
 
 
@@ -110,10 +106,9 @@ colorscheme seoul256 " zenburn nord monokai apprentice gruvbox tender
 " --color: Search color options
 command! -bang -nargs=* Find
   \ call fzf#vim#grep('rg --column --line-number --no-heading
-  \ --fixed-strings --ignore-case --no-ignore --hidden --follow
+  \ --no-fixed-strings --ignore-case --no-ignore --hidden --follow
   \ --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1,
-  \ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:40%'), <bang>0)
-
+  \ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:40%'), <bang>0)
 
 
 :let mapleader = ","
@@ -170,6 +165,7 @@ map g# g#zzg/
 
 map <leader>e :NERDTreeToggle<CR>
 map <leader>E :NERDTreeFocus<CR>
+map ff :NERDTreeFind<CR>
 
 " Move line down/up
 map <C-j> ddp
