@@ -14,9 +14,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/seoul256.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'tpope/vim-fugitive'
+Plug 'rakr/vim-one'
 call plug#end()
 
 
@@ -62,7 +62,8 @@ set hlsearch
 " incremental search stop at end of file
 set nowrapscan
 
-
+colorscheme one
+set background=dark
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -88,9 +89,6 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 syntax enable
-colorscheme seoul256
-highlight LineNr ctermbg=585858
-let g:airline_theme='angr'
 
 
 
