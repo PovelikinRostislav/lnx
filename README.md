@@ -18,7 +18,7 @@
 16. Create links for shared folders
     * `sudo ln -s /media/sf_SHARED_FOLDER_NAME /mnt/NAME`
 17. Install useful SW
-    * `sudo apt install vim clang git tmux curl cmake gnome-tweak-tool xclip`
+    * `sudo apt install vim clang git tmux curl cmake gnome-tweak-tool xclip htop`
 18. Adapt terminal
     * Turn off terminal bell
     * Make cursor underscore
@@ -54,3 +54,4 @@ stty erase ^?
     * [How to install rg](https://github.com/BurntSushi/ripgrep#installation)
     * After compilation of rg copy binary `./target/release/rg` to `$HOME/rg/bin` and add to `.bashrc` this dir. `export PATH="$HOME/rg/bin:$PATH"`
 26. To use vim `clang-format` plugin - add a `clang-format` binary into PATH
+27. Put htoprc into .config/htop/htoprc

@@ -16,7 +16,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rhysd/vim-clang-format'
 Plug 'tpope/vim-fugitive'
-Plug 'rakr/vim-one'
+Plug 'jacoborus/tender.vim'
+Plug 'mhartington/oceanic-next'
 call plug#end()
 
 
@@ -62,33 +63,17 @@ set hlsearch
 " incremental search stop at end of file
 set nowrapscan
 
-colorscheme one
-set background=dark
+set term=screen-256color
+set t_ut=
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+syntax enable
 
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize = "50"
 let g:NERDTreeShowHidden = 1
 
 let g:fzf_layout = { 'down': '~40%' }
-let g:fzf_colors =
-  \ { 'fg':    ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
 
-syntax enable
 
 
 
