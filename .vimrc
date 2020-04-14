@@ -7,6 +7,12 @@ set nocompatible
 autocmd BufRead * if search('-*- C++ -*-', 'nw') | setlocal ft=cpp | endif
 
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -16,8 +22,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rhysd/vim-clang-format'
 Plug 'tpope/vim-fugitive'
-Plug 'jacoborus/tender.vim'
 Plug 'mhartington/oceanic-next'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 
@@ -68,9 +74,13 @@ set t_ut=
 
 syntax enable
 
+colorscheme OceanicNext
+
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize = "50"
 let g:NERDTreeShowHidden = 1
+let g:airline#extensions#tabline#enabled = 1
+
 
 let g:fzf_layout = { 'down': '~40%' }
 

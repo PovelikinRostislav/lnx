@@ -10,6 +10,6 @@
 # alias e emacs
 # alias telnet ssh2
 
-alias ll="pwd; ls -la"
+alias ll="pwd; ls -la --color=no"
 alias tmux="TERM=xterm-256color tmux"
 
