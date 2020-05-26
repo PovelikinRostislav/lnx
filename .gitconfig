@@ -1,10 +1,10 @@
 [core]
     editor = vim
 [http]
-    proxy = SET_PROXY
+    proxy =
 [user]
-    name = SET_NAME
-    email = SET_EMAIL
+    name =
+    email =
 [alias]
     st = status
     co = checkout
