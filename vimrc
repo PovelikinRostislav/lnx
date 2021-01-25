@@ -29,6 +29,8 @@ set showmatch
 " show hidden symbols
 set list
 set listchars=tab:>-,trail:~,extends:>,precedes:<
+" highligh current line
+set cursorline
 
 
 " number of mandatory visible lines before and after the cursor line
@@ -58,19 +60,19 @@ Plug 'junegunn/fzf.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 call plug#end()
 
 
 " plugin configurations
-colorscheme tender
+colorscheme gruvbox
 
-let g:airline_theme='tender'
+let g:airline_theme='base16_gruvbox_dark_hard'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#left_alt_sep='|'
 let g:airline#extensions#tabline#left_sep=' '
 let g:airline_skip_empty_sections=1
-let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 
 let g:NERDTreeWinSize="50"
