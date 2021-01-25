@@ -67,6 +67,7 @@ call plug#end()
 
 " plugin configurations
 colorscheme gruvbox
+set background=dark
 
 let g:airline_theme='base16_gruvbox_dark_hard'
 let g:airline#extensions#tabline#enabled=1
