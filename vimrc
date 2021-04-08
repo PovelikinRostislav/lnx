@@ -39,6 +39,7 @@ set scrolloff=10
 set tabstop=4
 " number of spaces in tab when editing
 set softtabstop=4
+set shiftwidth=4
 " tabs are spaces
 set expandtab
 
@@ -57,11 +58,11 @@ endif
 call plug#begin()
 Plug 'junegunn/fzf', { 'dir': '~/installed/fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'jacoborus/tender.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'regedarek/ZoomWin'
 call plug#end()
 
 
@@ -130,6 +131,7 @@ nnoremap <leader>F :NERDTreeFind<CR>
 " open FZF windows
 nnoremap <leader>f :Files!<CR>
 nnoremap <leader>s :RG!<CR>
+vnoremap <leader>ss y:RG!<C-R>=escape(@",'/\')<CR><CR>
 nnoremap <leader>l :BLines!<CR>
 nnoremap <leader>L :Lines!<CR>
 nnoremap <leader>b :Buffers<CR>
