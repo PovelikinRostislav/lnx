@@ -29,8 +29,6 @@ set showmatch
 " show hidden symbols
 set list
 set listchars=tab:>-,trail:~,extends:>,precedes:<
-" highligh current line
-set cursorline
 
 
 " number of mandatory visible lines before and after the cursor line
@@ -63,14 +61,16 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'regedarek/ZoomWin'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 call plug#end()
 
 
 " plugin configurations
-colorscheme gruvbox
-set background=dark
+colorscheme onehalflight
+" fix for the onehalf scheme to not to highlight comments
+" highlight Comment gui=none cterm=none
 
-let g:airline_theme='base16_gruvbox_dark_hard'
+let g:airline_theme='onehalflight'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#left_alt_sep='|'
 let g:airline#extensions#tabline#left_sep=' '
@@ -126,8 +126,7 @@ inoremap <C-x> <ESC>:w<CR>
 nnoremap <leader>q :q<CR>
 " open project tree
 nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>E :NERDTreeFocus<CR>
-nnoremap <leader>F :NERDTreeFind<CR>
+nnoremap <leader>E :NERDTreeFind<CR>
 " open FZF windows
 nnoremap <leader>f :Files!<CR>
 nnoremap <leader>s :RG!<CR>
