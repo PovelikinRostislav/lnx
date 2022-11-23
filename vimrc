@@ -66,22 +66,24 @@ call plug#end()
 
 
 " plugin configurations
-colorscheme onehalflight
-" fix for the onehalf scheme to not to highlight comments
+colorscheme onehalfdark
+" fix for the onehalflight scheme to not to highlight comments
 " highlight Comment gui=none cterm=none
 
-let g:airline_theme='onehalflight'
+" airline plugin settings
+let g:airline_theme='onehalfdark'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#left_alt_sep='|'
 let g:airline#extensions#tabline#left_sep=' '
 let g:airline_skip_empty_sections=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 
+" NERD Tree settings
 let g:NERDTreeWinSize="50"
 let g:NERDTreeWinPos="right"
 let g:NERDTreeShowHidden=1
 
-" function which stands for grepping via rg in fzf disabling fuzzy search
+" function for grepping via rg in fzf, disabling fuzzy search
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
   let initial_command = printf(command_fmt, shellescape(a:query))
@@ -92,9 +94,11 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-" set proper leader instead of '\'
+" set proper leader key instead of '\'
 let mapleader=" "
 
+" MAPPINGS
+"
 " edit vimrc/zshrc/ripgrep
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>ez :e ~/.zshrc<CR>
@@ -130,7 +134,6 @@ nnoremap <leader>E :NERDTreeFind<CR>
 " open FZF windows
 nnoremap <leader>f :Files!<CR>
 nnoremap <leader>s :RG!<CR>
-vnoremap <leader>ss y:RG!<C-R>=escape(@",'/\')<CR><CR>
 nnoremap <leader>l :BLines!<CR>
 nnoremap <leader>L :Lines!<CR>
 nnoremap <leader>b :Buffers<CR>
